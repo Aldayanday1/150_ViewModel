@@ -118,12 +118,17 @@ fun TextHasil(namanya: String, telponnya: String, emailnya: String, alamatnya: S
             .fillMaxWidth()
     ){
         Text(
-            text = "Nama : " + namanya,
+            text = "Jenis Kelamin : " + jenisnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 4.dp)
         )
         Text(
-            text = "Telepon : " + telponnya,
+            text = "Status : " + statusnya,
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 4.dp)
+        )
+        Text(
+            text = "Alamat : " + alamatnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 4.dp)
         )
