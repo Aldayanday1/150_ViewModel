@@ -132,11 +132,6 @@ fun TextHasil(namanya: String, telponnya: String, emailnya: String, alamatnya: S
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 4.dp)
         )
-        Text(
-            text = "Alamat : " + alamatnya,
-            modifier = Modifier
-                .padding(horizontal = 10.dp, vertical = 4.dp)
-        )
     }
 }
 
