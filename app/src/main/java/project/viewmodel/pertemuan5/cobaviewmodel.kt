@@ -21,7 +21,7 @@ class cobaviewmodel : ViewModel() {
         private set
     var jenisKl: String by mutableStateOf("")
         private set
-    var status: String by mutableStateOf("")
+    var SelectStatus: String by mutableStateOf("")
         private set
     private val _uiState = MutableStateFlow(dataform())
     val uiState: StateFlow<dataform> = _uiState.asStateFlow()
@@ -32,11 +32,14 @@ class cobaviewmodel : ViewModel() {
         namaemail = email;
         namaAlmt = almt;
         jenisKl = jk;
-        status = stts;
+        SelectStatus = stts;
     }
 
     fun setJenis(pilihJK: String){
         _uiState.update { currentState -> currentState.copy(sex = pilihJK) }
+    }
+    fun setStatus(pilihStatus: String){
+        _uiState.update { currentState -> currentState.copy(stts = pilihStatus) }
     }
 
 }

@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import project.viewmodel.pertemuan5.data.dataform
 import project.viewmodel.pertemuan5.data.datasource.jenis
+import project.viewmodel.pertemuan5.data.datasource.status
 import project.viewmodel.pertemuan5.ui.theme.ViewModelTheme
 
 class MainActivity : ComponentActivity() {
@@ -44,6 +45,38 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun SelectJK(
+    options: List<String>,
+    onSelectionChanged: (String) -> Unit = {}
+){
+    var selectedValue by rememberSaveable { mutableStateOf("") }
+
+    Column(modifier = Modifier.padding(16.dp)) {
+        options.forEach{item ->
+            Row(
+                modifier = Modifier.selectable(
+                    selected = selectedValue == item,
+                    onClick = {
+                        selectedValue = item
+                        onSelectionChanged(item)
+                    }
+                ),
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                RadioButton(
+                    selected = selectedValue == item,
+                    onClick = {
+                        selectedValue = item
+                        onSelectionChanged(item)
+                    }
+                )
+                Text(item)
+            }
+        }
+    }
+}
+
+@Composable
+fun SelectStatus(
     options: List<String>,
     onSelectionChanged: (String) -> Unit = {}
 ){
@@ -154,7 +187,9 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
     SelectJK(
         options = jenis.map { id -> context.resources.getString(id) },
         onSelectionChanged = { cobaviewmodel.setJenis(it) })
-
+    SelectStatus(
+        options = status.map { id -> context.resources.getString(id) },
+        onSelectionChanged = { cobaviewmodel.setStatus(it) })
     OutlinedTextField(
         value = textAlamat,
         singleLine = true,
@@ -182,7 +217,7 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
         telponnya = cobaviewmodel.noTelp,
         emailnya = cobaviewmodel.namaemail,
         alamatnya = cobaviewmodel.namaAlmt,
-        statusnya = cobaviewmodel.status,
+        statusnya = cobaviewmodel.SelectStatus,
         jenisnya = cobaviewmodel.jenisKl
     )
 }
