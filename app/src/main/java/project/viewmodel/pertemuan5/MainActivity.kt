@@ -153,6 +153,12 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
     val uiState by cobaviewmodel.uiState.collectAsState()
     dataForm = uiState
 
+    Text(
+        text = "Create Your Account",
+        modifier = Modifier
+            .padding(horizontal = 10.dp, vertical = 4.dp)
+    )
+
     OutlinedTextField(
         value = textNama,
         singleLine = true,
