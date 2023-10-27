@@ -74,7 +74,7 @@ fun SelectJK(
 }
 
 @Composable
-fun TextHasil(namanya: String, telponnya: String, alamatnya: String, jenisnya: String){
+fun TextHasil(namanya: String, telponnya: String, emailnya: String, alamatnya: String, jenisnya: String){
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -89,6 +89,11 @@ fun TextHasil(namanya: String, telponnya: String, alamatnya: String, jenisnya: S
         )
         Text(
             text = "Telepon : " + telponnya,
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 4.dp)
+        )
+        Text(
+            text = "Email : " + emailnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 4.dp)
         )
@@ -110,6 +115,7 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
 
     var textNama by remember { mutableStateOf("") }
     var textTlp by remember { mutableStateOf("") }
+    var textemail by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
 
     val context = LocalContext.current
@@ -122,7 +128,7 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
         singleLine = true,
         shape = MaterialTheme.shapes.large,
         modifier = Modifier.fillMaxWidth(),
-        label = { Text(text = "Nama Lengkap")},
+        label = { Text(text = "Username")},
         onValueChange = {
             textNama = it
         }
@@ -133,9 +139,19 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         shape = MaterialTheme.shapes.large,
         modifier = Modifier.fillMaxWidth(),
-        label = { Text(text = "Telpon")},
+        label = { Text(text = "Telepon")},
         onValueChange = {
             textTlp = it
+        }
+    )
+    OutlinedTextField(
+        value = textemail,
+        singleLine = true,
+        shape = MaterialTheme.shapes.large,
+        modifier = Modifier.fillMaxWidth(),
+        label = { Text(text = "Email")},
+        onValueChange = {
+            textemail = it
         }
     )
     SelectJK(
@@ -154,7 +170,7 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
     Button(
         modifier = Modifier.fillMaxWidth(),
         onClick = {
-            cobaviewmodel.insertData(textNama, textTlp, textAlamat, dataForm.sex)
+            cobaviewmodel.insertData(textNama, textTlp, textemail, textAlamat, dataForm.sex)
         }
     ){
         Text(
@@ -166,6 +182,7 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
     TextHasil(
         namanya = cobaviewmodel.namaUsr,
         telponnya = cobaviewmodel.noTelp,
+        emailnya = cobaviewmodel.namaemail,
         alamatnya = cobaviewmodel.namaAlmt,
         jenisnya = cobaviewmodel.jenisKl
     )
