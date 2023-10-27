@@ -206,14 +206,14 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
             fontSize = 16.sp
         )
     }
-    Spacer(modifier = Modifier.height(100.dp))
+    Spacer(modifier = Modifier.height(10.dp))
     TextHasil(
+        jenisnya = cobaviewmodel.jenisKl,
+        statusnya = cobaviewmodel.SelectStatus,
+        alamatnya = cobaviewmodel.namaAlmt,
+        emailnya = cobaviewmodel.namaemail,
         namanya = cobaviewmodel.namaUsr,
         telponnya = cobaviewmodel.noTelp,
-        emailnya = cobaviewmodel.namaemail,
-        alamatnya = cobaviewmodel.namaAlmt,
-        statusnya = cobaviewmodel.SelectStatus,
-        jenisnya = cobaviewmodel.jenisKl
     )
 }
 
@@ -221,20 +221,14 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
 fun TampilLayout(
     modifier: Modifier = Modifier
 ){
-    Text(
-        text = "M Aldi Raihan F",
-        fontWeight = FontWeight.Bold,
-        fontSize = 25.sp)
-    Spacer(modifier = Modifier.padding(5.dp))
-
-    val cardElevation = 5.dp
+    val cardElevation = 1.dp
 
     Card (
         modifier = modifier,
         elevation = cardElevation
     ){
         Column(
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(20.dp)
         ){
