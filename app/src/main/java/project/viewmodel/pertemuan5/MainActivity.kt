@@ -8,7 +8,6 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -139,6 +138,9 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
             textTlp = it
         }
     )
+    SelectJK(
+        options = jenis.map { id -> context.resources.getString(id) },
+        onSelectionChanged = { cobaviewmodel.setJenis(it) })
     OutlinedTextField(
         value = textAlamat,
         singleLine = true,
@@ -149,9 +151,6 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
             textAlamat = it
         }
     )
-    SelectJK(
-        options = jenis.map { id -> context.resources.getString(id) },
-        onSelectionChanged = { cobaviewmodel.setJenis(it) })
     Button(
         modifier = Modifier.fillMaxWidth(),
         onClick = {
