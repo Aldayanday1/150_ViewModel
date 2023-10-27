@@ -76,7 +76,7 @@ fun SelectJK(
 
 
 @Composable
-fun TextHasil(namanya: String, telponnya: String, emailnya: String, alamatnya: String, jenisnya: String){
+fun TextHasil(namanya: String, telponnya: String, emailnya: String, alamatnya: String, jenisnya: String, statusnya: String){
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -103,11 +103,6 @@ fun TextHasil(namanya: String, telponnya: String, emailnya: String, alamatnya: S
             text = "Alamat : " + alamatnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 4.dp)
-        )
-        Text(
-            text = "Jenis Kelamin : " + jenisnya,
-            modifier = Modifier
-                .padding(horizontal = 10.dp, vertical = 5.dp)
         )
     }
 }
@@ -173,7 +168,7 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
     Button(
         modifier = Modifier.fillMaxWidth(),
         onClick = {
-            cobaviewmodel.insertData(textNama, textTlp, textemail, textAlamat, dataForm.sex)
+            cobaviewmodel.insertData(textNama, textTlp, textemail, textAlamat, dataForm.sex, dataForm.stts)
         }
     ){
         Text(
@@ -187,6 +182,7 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
         telponnya = cobaviewmodel.noTelp,
         emailnya = cobaviewmodel.namaemail,
         alamatnya = cobaviewmodel.namaAlmt,
+        statusnya = cobaviewmodel.status,
         jenisnya = cobaviewmodel.jenisKl
     )
 }
