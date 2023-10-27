@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -72,6 +73,7 @@ fun SelectJK(
         }
     }
 }
+
 
 @Composable
 fun TextHasil(namanya: String, telponnya: String, emailnya: String, alamatnya: String, jenisnya: String){
@@ -157,6 +159,7 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
     SelectJK(
         options = jenis.map { id -> context.resources.getString(id) },
         onSelectionChanged = { cobaviewmodel.setJenis(it) })
+
     OutlinedTextField(
         value = textAlamat,
         singleLine = true,
@@ -192,6 +195,11 @@ fun TampilForm(cobaviewmodel: cobaviewmodel = viewModel()) {
 fun TampilLayout(
     modifier: Modifier = Modifier
 ){
+    Text(
+        text = "M Aldi Raihan F",
+        fontWeight = FontWeight.Bold,
+        fontSize = 25.sp)
+    Spacer(modifier = Modifier.padding(5.dp))
 
     val cardElevation = 5.dp
 
